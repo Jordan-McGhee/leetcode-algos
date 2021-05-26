@@ -1,5 +1,5 @@
 """
-
+#1431
 Kids With the Greatest Number of Candies
 
 Given the array candies and the integer extraCandies, where candies[i] represents the number of candies that the ith kid has.
@@ -35,4 +35,43 @@ def kidsWithCandies(candies, extraCandies):
 
     return test
 
-print(kidsWithCandies([2,3,5,1,3], 3))
+# print(kidsWithCandies([2,3,5,1,3], 3))
+
+"""
+#628
+Maximum Product of Three Numbers
+
+Given an integer array nums, find three numbers whose product is maximum and return the maximum product.
+Example 1:
+Input: nums = [1,2,3]
+Output: 6
+
+"""
+
+def maximumProduct(nums):
+
+    nums.sort()
+
+    # With the list sorted, we can grab the first two numbers, which if they're negative, multiplying them together might give us a larger product than just multiplying the three largest positive numbers
+    test1 = nums[:2]+nums[len(nums)-1:] 
+
+    # Grab the three largest positive numbers just in case their product is larger than the numbers in test1
+    test2 = nums[len(nums)-3:]
+    
+    # Create our variables to multiply our numbers by for comparison
+    product1 = 1
+    product2 = 1
+
+    #iterate over nums in test1 and 2, multiplying them by product1 and 2 respectively
+    for num in test1:
+        product1*=num
+
+    for num in test2:
+        product2 *= num
+
+    #return the larger of the two products
+    return max([product1, product2])
+
+print(maximumProduct([1,2,3]))
+print(maximumProduct([1,2,3,4]))
+print(maximumProduct([-100,-98,-1,2,3,4]))
