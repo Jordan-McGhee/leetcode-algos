@@ -72,6 +72,48 @@ def maximumProduct(nums):
     #return the larger of the two products
     return max([product1, product2])
 
-print(maximumProduct([1,2,3]))
-print(maximumProduct([1,2,3,4]))
-print(maximumProduct([-100,-98,-1,2,3,4]))
+# print(maximumProduct([1,2,3]))
+# print(maximumProduct([1,2,3,4]))
+# print(maximumProduct([-100,-98,-1,2,3,4]))
+
+"""
+
+#1
+Two Sum
+
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
+Example:
+
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Output: Because nums[0] + nums[1] == 9, we return [0, 1]
+
+"""
+
+def twoSum(nums, target):
+    # create dictionary for values in nums that we will test
+    tested = {}
+
+    # iterate over nums with enumerate to track their indices as well
+    for i, num in enumerate(nums):
+
+        # subtract num from target to find possible pair
+        possible = target - num
+
+        # if possible is in our dictionary of tested numbers, return the value of tested[possible] as the first index, and i from our current iteration for the second
+        if possible in tested:
+            return [tested[possible], i]
+        
+        # if possible was not in tested yet, add the num as a key to tested with its index as its value
+        tested[num] = i
+
+    # if we reach this point, there is no solution. Returns an empty list
+    return []
+    
+
+print(twoSum([11,15,2,7], 9))
