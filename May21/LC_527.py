@@ -127,3 +127,37 @@ def maximumWealth(accounts):
     return max_wealth
 
 # print(maximumWealth([[1,2,3],[3,2,1]]))
+
+"""
+
+#1512
+Number of Good Pairs
+
+Given an array of integers nums.
+
+A pair (i,j) is called good if nums[i] == nums[j] and i < j.
+
+Return the number of good pairs.
+
+Example:
+Input: nums = [1,2,3,1,1,3]
+Output: 4
+Explanation: There are 4 good pairs (0,3), (0,4), (3,4), (2,5) 0-indexed.
+
+"""
+
+def numIdenticalPairs(nums):
+    # variable to count number of good pairs
+    total = 0
+
+    # iterate over every index in nums
+    for i in range(len(nums)):
+        # iterate over the indices again
+        for j in range(len(nums)):
+            # compare each index at j to index at i, increment total if the numbers at each index are equal and j is greater than i
+            if nums[j] == nums[i] and i < j:
+                total += 1
+
+    return total
+
+print(numIdenticalPairs([1,2,3,1,1,3]))
