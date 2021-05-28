@@ -78,15 +78,61 @@ For nums[4]=3 there exist three smaller numbers than it (1, 2 and 2).
 """
 
 def smallerNumbersThanCurrent(nums):
+    # establish empty list to append counts to
     answer = []
 
+    # iterate over length of nums list to grab index
     for i in range(len(nums)):
+        # count variable for smaller numbers, resets with every iteration of outer for loop
         smaller = 0
+        # iterate again to get each individual num
         for num in nums:
+            # check if number is smaller than the number at index i
             if num < nums[i]:
+                # if it is, increment smaller
                 smaller += 1
+        
+        # append smaller to answer after iterating through each number
         answer.append(smaller)
 
     return answer
 
 # print(smallerNumbersThanCurrent([8,1,2,2,3]))
+
+"""
+
+#1342
+Number of Steps to Reduce a Number to Zero
+
+Given a non-negative integer num, return the number of steps to reduce it to zero. If the current number is even, you have to divide it by 2, otherwise, you have to subtract 1 from it.
+
+Example:
+Input: num = 14
+Output: 6
+Explanation: 
+Step 1) 14 is even; divide by 2 and obtain 7. 
+Step 2) 7 is odd; subtract 1 and obtain 6.
+Step 3) 6 is even; divide by 2 and obtain 3. 
+Step 4) 3 is odd; subtract 1 and obtain 2. 
+Step 5) 2 is even; divide by 2 and obtain 1. 
+Step 6) 1 is odd; subtract 1 and obtain 0.
+
+"""
+
+def numberOfSteps(num):
+    # counter for number of steps before num = 0
+    steps = 0
+    # while loop to run continuously until num == 0
+    while num != 0:
+        # condition for when num is even: divide number by 2, increment steps
+        if num % 2 == 0:
+            num = num/2
+            steps += 1
+        # condition for when num is odd: subtract 1 from number, increment steps
+        else:
+            num -= 1
+            steps += 1
+
+    return steps
+
+# print(numberOfSteps(14))
