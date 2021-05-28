@@ -136,3 +136,38 @@ def numberOfSteps(num):
     return steps
 
 # print(numberOfSteps(14))
+
+"""
+
+#1281
+Subtract the Product and Sum of Digits in an Integer
+
+Given an integer number n, return the difference between the product of its digits and the sum of its digits.
+
+Example:
+Input: n = 234
+Output: 15 
+Explanation: 
+Product of digits = 2 * 3 * 4 = 24 
+Sum of digits = 2 + 3 + 4 = 9 
+Result = 24 - 9 = 15
+
+"""
+
+def subtractPrimeAndSum(n):
+    # turn n into string (or list) so we can iterate over individual numbers
+    string = str(n)
+
+    # establish variables to keep track of product and sum totals.
+    product = 1
+    add = 0
+
+    # iterate over char in string, turn character back into integer, multiply our product variable by the integer, add integer to our add variable
+    for char in string:
+        product *= int(char)
+        add += int(char)
+    
+    # return product - add
+    return product - add
+
+# print(subtractPrimeAndSum(234))
