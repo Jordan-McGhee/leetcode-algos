@@ -26,3 +26,29 @@ def runningSum(nums):
     return sums
 
 # print(runningSum([1,2,3,4]))
+
+"""
+
+#1108
+Defanging and IP Address
+
+Given a valid (IPv4) IP address, return a defanged version of that IP address.
+
+A defanged IP address replaces every period "." with "[.]".
+
+Example:
+Input: address = "1.1.1.1"
+Output: "1[.]1[.]1[.]1"
+
+"""
+
+def deFangIPAddr(address):
+    # return address.replace('.','[.]')
+
+    # OR
+
+    return "[.]".join(address.split('.'))
+
+# print(deFangIPAddr("1.1.1.1"))
+
+
