@@ -160,4 +160,34 @@ def numIdenticalPairs(nums):
 
     return total
 
-print(numIdenticalPairs([1,2,3,1,1,3]))
+# print(numIdenticalPairs([1,2,3,1,1,3]))
+
+"""
+
+#771
+Jewels and Stones
+
+You're given strings jewels representing the types of stones that are jewels, and stones representing the stones you have. Each character in stones is a type of stone you have. You want to know how many of the stones you have are also jewels.
+
+Letters are case sensitive, so "a" is considered a different type of stone from "A".
+
+Example:
+Input: jewels = "aA", stones = "aAAbbbb"
+Output: 3
+
+"""
+
+def numJewelsInStones(jewels, stones):
+    # all the characters in jewels will be unique, so we can iterate over each one
+    # then check how many times it shows up in stones
+    # track the count of each character in jewels with a variable that we will return at the end
+
+    total = 0
+
+    for char in jewels:
+        total += stones.count(char)
+    
+    return total
+
+
+print(numJewelsInStones("aA", "aAAbbbb"))
