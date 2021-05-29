@@ -206,3 +206,45 @@ def restoreString(s, indices):
     return "".join(new)
 
 # print(restoreString('codeleet', [4,5,6,7,0,2,1,3]))
+
+"""
+
+#1313
+Decompress Run-Length Encoded List
+
+We are given a list nums of integers representing a list compressed with run-length encoding.
+
+Consider each adjacent pair of elements [freq, val] = [nums[2*i], nums[2*i+1]] (with i >= 0).  For each such pair, there are freq elements with value val concatenated in a sublist. Concatenate all the sublists from left to right to generate the decompressed list.
+
+Return the decompressed list.
+
+Example:
+Input: nums = [1,2,3,4]
+Output: [2,4,4,4]
+Explanation: The first pair [1,2] means we have freq = 1 and val = 2 so we generate the array [2].
+The second pair [3,4] means we have freq = 3 and val = 4 so we generate [4,4,4].
+At the end the concatenation [2] + [4,4,4] is [2,4,4,4].
+
+"""
+
+def decompressList(nums):
+    # empty list to return at the end
+    answer = []
+
+    # my solution uses two variables to track values at even and odd indexes. Even indexes will be the frequency, and odds will be the value
+    even = 0
+    odd = 0
+
+    # loop over nums with enumerate to keep track of indices and values
+    for i, num in enumerate(nums):
+        # if the index is even, update the even variable
+        if i % 2 == 0:
+            even = num
+        # else, update the odd variable. Add to our empty list by multiplying a list with our current value for odd in it by our current value in even
+        else:
+            odd = num
+            answer += [odd]*even
+    
+    return answer
+
+print(decompressList([1,2,3,4]))
