@@ -171,3 +171,38 @@ def subtractPrimeAndSum(n):
     return product - add
 
 # print(subtractPrimeAndSum(234))
+
+"""
+
+#1528
+Shuffle String
+
+Given a string s and an integer array indices of the same length.
+
+The string s will be shuffled such that the character at the ith position moves to indices[i] in the shuffled string.
+
+Return the shuffled string.
+
+Example:
+Input: s = "codeleet", indices = [4,5,6,7,0,2,1,3]
+Output: "leetcode"
+Explanation: As shown, "codeleet" becomes "leetcode" after shuffling.
+
+"""
+
+def restoreString(s, indices):
+    # create empty list with a space for each character in s using list comprehension
+    new = ["" for x in s]
+    # variable to increment in our for loop
+    j = 0
+    
+    # iterate over each number in indices
+    for i in indices:
+        # each number is the corresponding index in new, grab the character in s at index j, change the index i in new to index j in s. Increment j after the change
+        new[i] = s[j]
+        j += 1
+    
+    # use join to turn our new list into a string
+    return "".join(new)
+
+# print(restoreString('codeleet', [4,5,6,7,0,2,1,3]))
