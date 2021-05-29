@@ -289,3 +289,45 @@ def createTargetArray(nums, index):
     return target
 
 # print(createTargetArray([0,1,2,3,4], [0,1,2,2,1]))
+
+"""
+
+#1678
+Goal Parser Interpretation
+
+You own a Goal Parser that can interpret a string command. The command consists of an alphabet of "G", "()" and/or "(al)" in some order. The Goal Parser will interpret "G" as the string "G", "()" as the string "o", and "(al)" as the string "al". The interpreted strings are then concatenated in the original order.
+
+Given the string command, return the Goal Parser's interpretation of command.
+
+Example:
+Input: command = "G()(al)"
+Output: "Goal"
+Explanation: The Goal Parser interprets the command as follows:
+G -> G
+() -> o
+(al) -> al
+The final concatenated result is "Goal".
+
+"""
+
+def interpret(command):
+    # empty list to append correct values to
+    answer = []
+
+    # iterate using i and range(len()) to keep track of indices
+    for i in range(len(command)):
+        # if the character at index i in command is either G, a, or l, just append the letter
+        if command[i] in ['G', 'a', 'l']:
+            answer.append(command[i])
+        
+        # check if the character at index i in command is (
+        elif command[i] == "(":
+            # if so, check if the character immediately after (i+1) is )
+            if command[i+1] == ")":
+                # if that condition is met, append the letter o to our list
+                answer.append('o')
+
+    # user join to turn our list into a string
+    return "".join(answer)
+
+print(interpret("G()(al)"))
