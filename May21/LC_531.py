@@ -86,3 +86,21 @@ def sortSentence(s):
     return " ".join(lst)
 
 # print(sortSentence("is2 sentence4 This1 a3"))
+
+
+"""
+
+#709
+To Lower Case
+
+Given a string s, return the string after replacing every uppercase letter with the same lowercase letter.
+
+Example:
+Input: s = "Hello"
+Output: hello
+
+"""
+
+def toLowerCase(s):
+    # Easy problem. Use the lower function
+    return s.lower()
