@@ -74,4 +74,56 @@ def pangramCheck(sentence):
 
     return True
 
-print(pangramCheck("thequickbrownfoxjumpsoverthelazydog"))
+# print(pangramCheck("thequickbrownfoxjumpsoverthelazydog"))
+
+
+"""
+
+#1614
+Maximum Nesting Depth of Parentheses
+
+A string is a valid parentheses string (denoted VPS) if it meets one of the following:
+
+It is an empty string "", or a single character not equal to "(" or ")",
+It can be written as AB (A concatenated with B), where A and B are VPS's, or
+It can be written as (A), where A is a VPS.
+We can similarly define the nesting depth depth(S) of any VPS S as follows:
+
+depth("") = 0
+depth(C) = 0, where C is a string with a single character not equal to "(" or ")".
+depth(A + B) = max(depth(A), depth(B)), where A and B are VPS's.
+depth("(" + A + ")") = 1 + depth(A), where A is a VPS.
+For example, "", "()()", and "()(()())" are VPS's (with nesting depths 0, 1, and 2), and ")(" and "(()" are not VPS's.
+
+Given a VPS represented as string s, return the nesting depth of s.
+
+Example:
+Input: s = "(1+(2*3)+((8)/4))+1"
+Output: 3
+Explanation: Digit 8 is inside of 3 nested parentheses in the string.
+
+"""
+
+def maxDepth(s):
+    # create two variables, one that we'll return as our answer at the end, and the other to be a running count of open or closed parentheses
+    maximum = 0
+    count = 0
+
+    # iterate over every character
+    for char in s:
+        
+        # if we get an open parentheses, incrememnt our count variable
+        if char == "(":
+            count += 1
+
+            # check if count is greater than maximum, if so, maximum = our new count
+            if count > maximum:
+                maximum = count
+
+        # if we get a closed parentheses, decrement our count variable
+        elif char == ")":
+            count -= 1
+
+    return maximum
+
+# print(maxDepth("(1+(2*3)+((8)/4))+1"))
