@@ -132,4 +132,37 @@ def truncateSentence(s,k):
     # use join to create our truncated sentence, slicing off the words that come after k
     return " ".join(lst[:k])
 
-print(truncateSentence("Hello how are you Contestant", 4))
+# print(truncateSentence("Hello how are you Contestant", 4))
+
+"""
+
+#1732
+Find the Highest Altitude
+
+There is a biker going on a road trip. The road trip consists of n + 1 points at different altitudes. The biker starts his trip on point 0 with altitude equal 0.
+
+You are given an integer array gain of length n where gain[i] is the net gain in altitude between points i​​​​​​ and i + 1 for all (0 <= i < n). Return the highest altitude of a point.
+
+Example:
+Input: gain = [-5,1,5,0,-7]
+Output: 1
+Explanation: The altitudes are [0,-5,-4,1,1,-6]. The highest is 1.
+
+"""
+
+def largestAltitude(gain):
+    # establish two variables, one a running total we will iterate over. The other we will use to keep track of the highest altitude we have reached
+    altitude = 0
+    highest = 0
+
+    # iterate over every number in gain and add it to altitude
+    for num in gain:
+        altitude += num
+
+        # if altitude is greater than our current highest after adding a number, update highest to be our current altitude
+        if altitude > highest:
+            highest = altitude
+
+    return highest
+
+# print(largestAltitude([-5,1,5,0,-7]))
