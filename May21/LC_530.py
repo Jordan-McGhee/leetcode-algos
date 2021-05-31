@@ -154,3 +154,45 @@ def arrayStringsAreEqual(word1, word2):
 
     # will return True if one = two, False if not
     return one == two
+
+"""
+
+#1684 
+Count the Number of Consistent Strings
+
+You are given a string allowed consisting of distinct characters and an array of strings words. A string is consistent if all characters in the string appear in the string allowed.
+
+Return the number of consistent strings in the array words.
+
+Example:
+Input: allowed = "ab", words = ["ad","bd","aaab","baa","badab"]
+Output: 2
+Explanation: Strings "aaab" and "baa" are consistent since they only contain characters 'a' and 'b'.
+
+"""
+
+def countConsistentString(allowed, words):
+    # establish total variable to return at the end
+    total = 0
+
+    # iterate over every word in our given array
+    for word in words:
+        # have valid variable which is True at the beginning. This is our check to see if the word is consistent. We assume each word is consistent by default with this solution
+        valid = True
+
+        # iterate over every character in word
+        for char in word:
+            
+            # check to see if each character is not in our allowed string
+            if char not in allowed:
+                # if we enter this condition, set valid to false and break out of the loop to save run time
+                valid = False
+                break
+        
+        # if we iterate over every char in word and valid still equals true, increment total
+        if valid == True:
+            total += 1
+
+    return total
+
+# print(countConsistentString("ab", ["ad","bd","aaab","baa","badab"]))
