@@ -44,4 +44,45 @@ def numberOfMatches(n):
     # we could also just return n-1 since there will have to be that many games played, and the champion will never lose. Gets more complicated in a double-elimination tournament
     return matches
 
-print(numberOfMatches(7))
+# print(numberOfMatches(7))
+
+"""
+
+#1859
+Sorting the Sequence
+
+A sentence is a list of words that are separated by a single space with no leading or trailing spaces. Each word consists of lowercase and uppercase English letters.
+
+A sentence can be shuffled by appending the 1-indexed word position to each word then rearranging the words in the sentence.
+
+For example, the sentence "This is a sentence" can be shuffled as "sentence4 a3 is2 This1" or "is2 sentence4 This1 a3".
+Given a shuffled sentence s containing no more than 9 words, reconstruct and return the original sentence.
+
+Example:
+Input: s = "is2 sentence4 This1 a3"
+Output: "This is a sentence"
+Explanation: Sort the words in s to their original positions "This1 is2 a3 sentence4", then remove the numbers.
+
+"""
+
+def sortSentence(s):
+    # split the s into a list so we can iterate over each word
+    lst = s.split()
+    
+    # use enumerate to iterate, for each word, use slicing to move the number to the front of the word. Update the word at each index with the new words we created
+    for i, word in enumerate(lst):
+        word = word[-1] + word[:len(word)-1]
+        lst[i] = word
+    
+    # sort the list with the numbers in front
+    lst.sort()
+    
+    # iterate using enumerate again, use slicing to remove the number from the front of each word. Update the word at each index with the words missing the numbers
+    for i, word in enumerate(lst):
+        word = word[1:]
+        lst[i] = word
+
+    # return a new sentence using join
+    return " ".join(lst)
+
+# print(sortSentence("is2 sentence4 This1 a3"))
