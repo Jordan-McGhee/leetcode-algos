@@ -40,4 +40,38 @@ def balancedStringSplit(s):
 
     return total
 
-print(balancedStringSplit("RLRRLLRLRL"))
+# print(balancedStringSplit("RLRRLLRLRL"))
+
+"""
+
+#1832
+Check if the Sentence is Pangram
+
+A pangram is a sentence where every letter of the English alphabet appears at least once.
+
+Given a string sentence containing only lowercase English letters, return true if sentence is a pangram, or false otherwise.
+
+Example:
+Input: sentence = "thequickbrownfoxjumpsoverthelazydog"
+Output: true
+Explanation: sentence contains at least one of every letter of the English alphabet.
+
+"""
+
+def pangramCheck(sentence):
+    # establish variable with all letters in alphabet
+    alpha = "abcdefghijklmnopqrstuvwxyz"
+
+    # iterate over every character in alpha
+    for char in alpha:
+        # if char in sentence, continue to next char
+        if char in sentence:
+            continue
+
+        # else, return False and stop loop
+        else:
+            return False
+
+    return True
+
+print(pangramCheck("thequickbrownfoxjumpsoverthelazydog"))
